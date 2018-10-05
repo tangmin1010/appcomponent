@@ -16,13 +16,15 @@ import io.reactivex.schedulers.Schedulers;
 public class UserViewModel extends ViewModel {
 
 
-    MutableLiveData<User> mUser;
+    MutableLiveData<User> mUser = new MutableLiveData<>();
+
+
+    public UserViewModel() {
+        mUser.setValue(null);
+        loadUser();
+    }
 
     public LiveData<User> getUser() {
-        if (mUser == null) {
-            mUser = new MutableLiveData<>();
-            loadUser();
-        }
         return mUser;
     }
 

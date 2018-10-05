@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.example.lifecycle.model.UserViewModel;
+import com.example.lifecycle.ui.MainFragment;
 import com.example.lifecycle.util.Logger;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +31,9 @@ public class MainActivity extends AppCompatActivity {
         UserViewModel viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         viewModel.getUser().observe(this, (user) -> {
             Logger.d("this is called in observe onchange");
-            mUserText.setText(user.mName);
+            if (user != null) {
+                mUserText.setText(user.mName);
+            }
         });
 
         Logger.d(viewModel.toString());
@@ -39,7 +42,9 @@ public class MainActivity extends AppCompatActivity {
         secondIntent.setComponent(new ComponentName(getApplicationContext(),SecondActivity.class));
         mUserText.setOnClickListener((self)->startActivity(secondIntent));
 
-
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().add(R.id.frame_container, new MainFragment(),"main_fragment").commit();
+        }
     }
 
 

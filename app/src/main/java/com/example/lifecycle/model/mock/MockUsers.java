@@ -31,7 +31,7 @@ public final class MockUsers {
             return new User("ERROR", "ERROR");
         }
 
-        SystemClock.sleep(5500);
+        SystemClock.sleep(1000);
         return mUsers.get(new UserIdentification(id));
     }
 
