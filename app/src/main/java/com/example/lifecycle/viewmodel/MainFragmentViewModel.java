@@ -1,4 +1,4 @@
-package com.example.lifecycle.model;
+package com.example.lifecycle.viewmodel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;

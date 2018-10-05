@@ -1,6 +1,5 @@
 package com.example.lifecycle.ui;
 
-import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lifecycle.R;
-import com.example.lifecycle.model.MainFragmentViewModel;
+import com.example.lifecycle.viewmodel.MainFragmentViewModel;
 
 public class MainFragment extends Fragment {
 

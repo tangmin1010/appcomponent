@@ -1,4 +1,4 @@
-package com.example.lifecycle.model;
+package com.example.lifecycle.viewmodel;
 
 import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;

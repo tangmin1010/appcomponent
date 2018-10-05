@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lifecycle.model.SecondUserViewModel;
+import com.example.lifecycle.viewmodel.SecondUserViewModel;
 import com.example.lifecycle.room.UserDatabase;
 import com.example.lifecycle.room.entries.UserEntry;
 import com.example.lifecycle.util.Logger;
