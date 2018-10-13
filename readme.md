@@ -3,13 +3,13 @@
 标签（空格分隔）： Android Architecture Components Lifecycles ViewModel LiveData
 
 ---
-##前言
+## 前言
 无论是什么应用的开发过程，都无法摆脱‘界面’、‘数据源’、‘数据的业务逻辑’三个部分以及这三个部分之间的爱恨纠葛。Android的应用开发亦是如此。google为了方便Android的应用开发者，已经提供非常优秀的Framework架构，开发者只需要遵循其架构规范就能够比较容易的开发出能够正常运行的Android应用。
 
 不过，在实际的开发情况中，出现了一个非常普遍的问题：庞大的类，特别是庞大的UI类（Activity或者Fragment）。庞大的UI类给代码的质量带来很大的隐患：可读性差、可维护性差、高耦合导致的健壮性差。为了更好指导应用开发者开发出高质量的应用程序，简化开发流程，google在Android平台上发布了**Android架构组件（Android Architecture Components）**
       
 ---
-##架构组件简介
+## 架构组件简介
 Android架构组件中主要包含如下组件：
 
  1. Lifecycles： 生命周期管理，该组件是其它组件的基础，可由于跟踪UI的（Activity和Fragment）的生命周期
