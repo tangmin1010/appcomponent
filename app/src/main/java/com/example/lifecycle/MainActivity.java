@@ -3,12 +3,13 @@ package com.example.lifecycle;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.lifecycle.observer.SelfDefaultLifecycleObserver;
+import com.example.lifecycle.observer.SelfLifeCycleObserver;
 import com.example.lifecycle.ui.AddUserFragment;
 import com.example.lifecycle.ui.MainFragment;
 import com.example.lifecycle.util.Logger;
 
 public class MainActivity extends AppCompatActivity {
-
 
 
     @Override
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getLifecycle().addObserver(new SelfLifeCycleObserver());
+//        getLifecycle().addObserver(new SelfDefaultLifecycleObserver());
 
 //        new LoaderTask().execute();
 //        UserViewModel viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
@@ -40,5 +42,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 }
