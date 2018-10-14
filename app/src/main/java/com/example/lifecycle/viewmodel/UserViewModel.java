@@ -1,9 +1,10 @@
 package com.example.lifecycle.viewmodel;
 
+import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
-import android.os.SystemClock;
 
 import com.example.lifecycle.bean.User;
 import com.example.lifecycle.model.mock.MockUsers;
@@ -15,17 +16,15 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserViewModel extends ViewModel {
 
-
     MutableLiveData<User> mUser = new MutableLiveData<>();
-
 
     public UserViewModel() {
         mUser.setValue(null);
         loadUser();
     }
 
-    public LiveData<User> getUser() {
-        return mUser;
+    public void observe(LifecycleOwner owner, Observer<User> observer) {
+        mUser.observe(owner,observer);
     }
 
     void loadUser() {

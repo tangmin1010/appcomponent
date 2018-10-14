@@ -1,13 +1,16 @@
 package com.example.lifecycle;
 
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
-import com.example.lifecycle.observer.SelfDefaultLifecycleObserver;
 import com.example.lifecycle.observer.SelfLifeCycleObserver;
 import com.example.lifecycle.ui.AddUserFragment;
 import com.example.lifecycle.ui.MainFragment;
 import com.example.lifecycle.util.Logger;
+import com.example.lifecycle.viewmodel.UserViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +22,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getLifecycle().addObserver(new SelfLifeCycleObserver());
-//        getLifecycle().addObserver(new SelfDefaultLifecycleObserver());
+//      getLifecycle().addObserver(new SelfDefaultLifecycleObserver());
+
+        UserViewModel viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
+        viewModel.observe(this,user -> {
+            if(user != null && getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)){
+                Toast.makeText(this,"the user is " + user.toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
 //        new LoaderTask().execute();
 //        UserViewModel viewModel = ViewModelProviders.of(this).get(UserViewModel.class);
