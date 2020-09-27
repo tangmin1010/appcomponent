@@ -479,28 +479,28 @@ HolderFragment holderFragmentFor(FragmentActivity activity) {
 }
 ```
 
-看到这里，应该大体明白了，在`FragmentActivity`和`Fragment`没有实现`ViewModelStoreOwner`的情况下，是通过加入`HolderFragment`来管理`ViewModelStore`对象的。再看看`HolderFragment`的构造方法：
+看到这里，应该大体明白了，在`FragmentActivity`和`Fragment`没有实现`ViewModelStoreOwner`的情况下，是通过加入`HolderFragment`来管理`ViewModelStore`对象的。再看看`HolderFragment`的构造方法：  
 ```
 public HolderFragment() {
     setRetainInstance(true);
 }
 ```
 
-当`setRetainInstance`设置`true`时，会影响Fragment的生命周期：在Activity因为设备配置变化而被重建时，该Fragment的`onDestroy`方法不会被调用；因为没有销毁，重新加入Activity或者父Fragment时，其`onCreate`也不会再调用。Fragment对象没有销毁，其拥有的`ViewModelStore`对象也就一直存在。
+当`setRetainInstance`设置`true`时，会影响Fragment的生命周期：在Activity因为设备配置变化而被重建时，该Fragment的`onDestroy`方法不会被调用；因为没有销毁，重新加入Activity或者父Fragment时，其`onCreate`也不会再调用。Fragment对象没有销毁，其拥有的`ViewModelStore`对象也就一直存在。  
 
 ---
 
 ## 总结：
-虽然写了比较长，其实`LiveData`, `ViewModel`在实际的使用中还是比较容易。Google设计这几个框架的目的就是希望开发者能够更方便地处理UI和数据之间的耦合。
+虽然写了比较长，其实`LiveData`, `ViewModel`在实际的使用中还是比较容易。Google设计这几个框架的目的就是希望开发者能够更方便地处理UI和数据之间的耦合。 
 
 
 ## 参考文献
-[1. Handling Lifecycles with Lifecycle-Aware Components](https://developer.android.google.cn/topic/libraries/architecture/lifecycle)
-[2. LiveData Overview](https://developer.android.google.cn/topic/libraries/architecture/livedata)
-[3. ViewModel Overview](https://developer.android.google.cn/topic/libraries/architecture/viewmodel)
-[4. Android 架构组件（一）——Lifecycle](https://blog.csdn.net/zhuzp_blog/article/details/78871374)
-[5. Android 架构组件（二）——LiveData](https://blog.csdn.net/zhuzp_blog/article/details/78871527)
-[6. Android 架构组件（三）——ViewModel](https://blog.csdn.net/zhuzp_blog/article/details/78910535)
+[1. Handling Lifecycles with Lifecycle-Aware Components](https://developer.android.google.cn/topic/libraries/architecture/lifecycle)  
+[2. LiveData Overview](https://developer.android.google.cn/topic/libraries/architecture/livedata)  
+[3. ViewModel Overview](https://developer.android.google.cn/topic/libraries/architecture/viewmodel)  
+[4. Android 架构组件（一）——Lifecycle](https://blog.csdn.net/zhuzp_blog/article/details/78871374)  
+[5. Android 架构组件（二）——LiveData](https://blog.csdn.net/zhuzp_blog/article/details/78871527)  
+[6. Android 架构组件（三）——ViewModel](https://blog.csdn.net/zhuzp_blog/article/details/78910535)  
 
 
 
